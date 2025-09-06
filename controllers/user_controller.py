@@ -16,7 +16,7 @@ class UserController:
 
             existing_user = User.query.filter_by(email=email).first()
             if existing_user:
-                return render_template('contact.html', error="Usuário com este e-mail já existe", name=name, email=email)
+                return render_template('create_user.html', error="Usuário com este e-mail já existe", name=name, email=email)
 
             new_user = User(name=name, email=email)
             db.session.add(new_user)
@@ -24,4 +24,4 @@ class UserController:
 
             return redirect(url_for('index'))
 
-        return render_template('contact.html')
+        return render_template('create_user.html')
